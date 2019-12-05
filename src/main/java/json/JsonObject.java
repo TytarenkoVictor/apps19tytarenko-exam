@@ -1,9 +1,11 @@
 package json;
 
+import com.sun.deploy.util.StringUtils;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.sun.deploy.util.StringUtils;
 
 /**
  * Created by Andrii_Rodionov on 1/3/2017.
@@ -13,7 +15,7 @@ public class JsonObject extends Json {
     private List<JsonPair> jsonPairs;
 
     public JsonObject(JsonPair... jsonPairs) {
-        this.jsonPairs = Arrays.asList(jsonPairs);
+        this.jsonPairs = new ArrayList<>(Arrays.asList(jsonPairs));
     }
 
     @Override
@@ -36,7 +38,6 @@ public class JsonObject extends Json {
         return null;
     }
 }
-
 
 
 
