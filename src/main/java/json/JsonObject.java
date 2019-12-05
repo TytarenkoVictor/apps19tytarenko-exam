@@ -25,7 +25,13 @@ public class JsonObject extends Json {
     }
 
     public void add(JsonPair jsonPair) {
-        this.jsonPairs.add(jsonPair);
+        for (int i = 0; i < jsonPairs.size(); i++) {
+            if (jsonPairs.get(i).key.equals(jsonPair.key)) {
+                jsonPairs.set(i, jsonPair);
+                return;
+            }
+        }
+        jsonPairs.add(jsonPair);
     }
 
     public Json find(String name) {
