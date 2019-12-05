@@ -18,6 +18,10 @@ public class JsonObject extends Json {
         this.jsonPairs = new ArrayList<>(Arrays.asList(jsonPairs));
     }
 
+    private JsonObject(List<JsonPair> jsonPairs) {
+        this.jsonPairs = jsonPairs;
+    }
+
     @Override
     public String toJson() {
         String res = "{" + StringUtils.join(jsonPairs.stream().map(pair -> pair.key + ": " + pair.value.toJson()).collect(Collectors.toList()), ", ") + "}";
@@ -40,8 +44,7 @@ public class JsonObject extends Json {
     }
 
     public JsonObject projection(String... names) {
-        // ToDo
-        return null;
+        return new JsonObject(jsonPairs.stream().filter(jp -> Arrays.asList(names).contains(jp.key)).collect(Collectors.toList()));
     }
 }
 
